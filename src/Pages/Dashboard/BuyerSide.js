@@ -51,7 +51,7 @@ const BuyerSide = () => {
             key={myOrders.indexOf(x)}
             className="max-w-lg p-4 shadow-md bg-gray-100 dark:bg-gray-900 dark:text-gray-100"
           >
-            {/* <div className="space-y-4">
+            <div className="space-y-4">
               <div className="space-y-2">
                 <img
                   src={x?.itemImage}
@@ -82,7 +82,7 @@ const BuyerSide = () => {
                   {x?.paid === false ? "Pay" : "Paid"}
                 </button>
               </div>
-            </div> */}
+            </div>
           </div>
         ))}
       </div>
