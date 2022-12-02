@@ -2,6 +2,11 @@
 
 Live Link - [Create React App]().
 
+## Admin Role
+
+- ashimbhowmik239@gmail.com
+- pass : 123456
+
 ## I havae use this project
 
 - Firebase
