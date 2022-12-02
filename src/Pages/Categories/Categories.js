@@ -22,7 +22,7 @@ const Categories = () => {
               cutting-edge technology including smartphones, tablets, TVs, home
               appliances and more...
             </p>
-            <Link to="/category/road-bikes">
+            <Link to="/category/samsung">
               <button className="btn btn-sm">Show More</button>
             </Link>
           </div>
@@ -38,7 +38,7 @@ const Categories = () => {
               world alongside Android, and is a large part of the luxury market.
               The iPhone has generated
             </p>
-            <Link to="/category/road-bikes">
+            <Link to="/category/i-phone">
               <button className="btn btn-sm">Show More</button>
             </Link>
           </div>
@@ -54,7 +54,7 @@ const Categories = () => {
               Chinese consumer electronics manufacturer headquartered in
               Shenzhen .
             </p>
-            <Link to="/category/road-bikes">
+            <Link to="/category/one-plus">
               <button className="btn btn-sm">Show More</button>
             </Link>
           </div>

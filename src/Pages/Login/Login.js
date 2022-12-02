@@ -34,11 +34,8 @@ const Login = () => {
     <div>
       <section>
         <div className="hero w-full my-20">
-          <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
-            <div className="text-center lg:text-left">
-              <img className="w-full " src={img} alt="" />
-            </div>
-            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-10">
+          <div className="">
+            <div className="card lg:w-[800px] max-w-sm shadow-xl bg-base-100 py-10">
               <h1 className="text-center text-5xl font-bold">Login now!</h1>
               <form onSubmit={handleSubmit(handleLogin)} className="card-body">
                 <div className="form-control">

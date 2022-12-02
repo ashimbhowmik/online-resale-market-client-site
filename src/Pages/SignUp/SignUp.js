@@ -29,11 +29,8 @@ const SignUp = () => {
 
   return (
     <div className="hero w-full my-20">
-      <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
-        <div className="text-center lg:text-left">
-          <img className="w-full" src={img} alt="" />
-        </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-10">
+      <div>
+        <div className="card w-[800px] max-w-sm shadow-2xl bg-base-100 py-10">
           <h1 className="text-center text-5xl font-bold">Sign Up now!</h1>
           <form onSubmit={handleSubmit(handleSignUp)} className="card-body">
             <div className="form-control">
