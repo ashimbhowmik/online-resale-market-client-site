@@ -1,14 +1,16 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Navber from "../Pages/Shared/Navber/Navber";
+import Footer from "../Shared/Footer/Footer";
+import Navbar from "../Shared/Navbar/Navbar";
 
-const main = () => {
+const Main = () => {
   return (
     <div>
-      <Navber></Navber>
+      <Navbar></Navbar>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 };
 
-export default main;
+export default Main;

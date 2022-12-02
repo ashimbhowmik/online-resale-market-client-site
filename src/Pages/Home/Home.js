@@ -1,10 +1,15 @@
 import React from "react";
+import Categories from "../Categories/Categories";
+import ExtraService from "./ExtraService/ExtraService";
+import Header from "./Header/Header";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <section>
+      <Header></Header>
+      <Categories></Categories>
+      <ExtraService></ExtraService>
+    </section>
   );
 };
 
