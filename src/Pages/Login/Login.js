@@ -33,9 +33,6 @@ const Login = () => {
   return (
     <div>
       <section>
-        <div>
-          <img src="" alt="" />
-        </div>
         <div className="hero w-full my-20">
           <div className="">
             <div className="card lg:w-[800px] max-w-sm shadow-xl bg-base-100 py-10">
