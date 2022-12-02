@@ -9,25 +9,33 @@ const paymentHandler = (productId, token) => {
 
   const finalData = { cardName, cardNumber, productId };
 
-  fetch(`http://localhost:5000/booking/${productId}`, {
-    method: "PUT",
-    headers: {
-      authorization: `Bearer ${token}`,
-      "content-type": "application/json",
-    },
-    // body: JSON.stringify(user),
-  })
+  fetch(
+    `https://online-resale-market-client-site.vercel.app/booking/${productId}`,
+    {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${token}`,
+        "content-type": "application/json",
+      },
+      // body: JSON.stringify(user),
+    }
+  )
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
     });
 
-  axios.post("http://localhost:5000/payment", finalData).then((res) => {
-    if (res.data.insertedId) {
-      toast.success("Payment Successful");
-      window.location.reload();
-    }
-  });
+  axios
+    .post(
+      "https://online-resale-market-client-site.vercel.app/payment",
+      finalData
+    )
+    .then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Payment Successful");
+        window.location.reload();
+      }
+    });
 };
 
 const BuyerSide = () => {
@@ -35,7 +43,7 @@ const BuyerSide = () => {
   const [myOrders, setMyOrders] = useState();
   const [productId, setProductId] = useState();
   useEffect(() => {
-    fetch("http://localhost:5000/booking")
+    fetch("https://online-resale-market-client-site.vercel.app/booking")
       .then((res) => res.json())
       .then((data) => setMyOrders(data));
   }, []);

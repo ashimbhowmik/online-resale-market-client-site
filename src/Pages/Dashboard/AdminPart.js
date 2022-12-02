@@ -8,7 +8,7 @@ const AdminPart = () => {
   const pageParam = useParams().page;
   const [allUsers, setAllUsers] = useState();
   useEffect(() => {
-    fetch("http://localhost:5000/allUsers")
+    fetch("https://online-resale-market-client-site.vercel.app/allUsers")
       .then((res) => res.json())
       .then((data) => setAllUsers(data));
   }, []);
@@ -22,14 +22,17 @@ const AdminPart = () => {
   const verifySeller = (email) => {
     const user = { email };
 
-    fetch(`http://localhost:5000/updateSellerStatus`, {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${token}`,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
+    fetch(
+      `https://online-resale-market-client-site.vercel.app/updateSellerStatus`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

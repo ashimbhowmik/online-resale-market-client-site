@@ -6,11 +6,13 @@ import useAuth from "../../hooks/useAuth";
 
 const bookCycle = (item) => {
   delete item?._id;
-  axios.post("http://localhost:5000/booking", item).then((res) => {
-    if (res.data.insertedId) {
-      toast.success("Booked Successfully");
-    }
-  });
+  axios
+    .post("https://online-resale-market-client-site.vercel.app/booking", item)
+    .then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Booked Successfully");
+      }
+    });
 };
 
 const CategoriesCard = () => {
@@ -20,7 +22,7 @@ const CategoriesCard = () => {
   const [itemInfo, setItemInfo] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/allProducts")
+    fetch("https://online-resale-market-client-site.vercel.app/allProducts")
       .then((res) => res.json())
       .then((data) => data.filter((x) => x?.category === category))
       .then((filteredData) => setAllItems(filteredData));
