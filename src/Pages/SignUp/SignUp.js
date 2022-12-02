@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import img from "../../Images/signup.webp";
 
 const handelGoogleSignUp = (signInWithGoogle, location, navigate) => {
   const role = "buyer";
