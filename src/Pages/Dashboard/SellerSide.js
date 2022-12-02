@@ -5,7 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Link, useParams } from "react-router-dom";
 
 const handleProductDelete = (id) => {
-  const url = `https://online-resale-market-client-site.vercel.app/allProducts/${id}`;
+  const url = `https://online-resale-market-server-site.vercel.app/allProducts/${id}`;
   fetch(url, {
     method: "DELETE",
   })
@@ -24,7 +24,7 @@ const handleProductDelete = (id) => {
 const advertise = (item) => {
   delete item?._id;
   axios
-    .post("https://online-resale-market-client-site.vercel.app/advertise", item)
+    .post("https://online-resale-market-server-site.vercel.app/advertise", item)
     .then((res) => {
       if (res.data.insertedId) {
         toast.success("advertised Published");
@@ -44,8 +44,8 @@ const productHandler = (user) => {
   const itemCategory =
     document.getElementById("item-category").value === "Samsung"
       ? "samsung"
-      : document.getElementById("item-category").value === "I Phone"
-      ? "i-phone"
+      : document.getElementById("item-category").value === "Iphone"
+      ? "iphone"
       : "one-plus";
 
   const itemDate = new Date().getTime();
@@ -65,7 +65,7 @@ const productHandler = (user) => {
 
   axios
     .post(
-      "https://online-resale-market-client-site.vercel.app/addProduct",
+      "https://online-resale-market-server-site.vercel.app/addProduct",
       data
     )
     .then((res) => {
@@ -86,7 +86,7 @@ const SellerSide = ({ data }) => {
   const pageParam = useParams().page;
   const [myProducts, setMyProducts] = useState();
   useEffect(() => {
-    fetch("https://online-resale-market-client-site.vercel.app/allProducts")
+    fetch("https://online-resale-market-server-site.vercel.app/allProducts")
       .then((res) => res.json())
       .then((data) => data?.filter((x) => x.sellerName === user?.displayName))
       .then((filteredData) => setMyProducts(filteredData));
@@ -157,7 +157,7 @@ const SellerSide = ({ data }) => {
               id="item-category"
             >
               <option>Samsung</option>
-              <option>I Phone</option>
+              <option>Iphone</option>
               <option>One Plus</option>
             </select>
             <div className="flex items-center justify-center mt-2">
@@ -182,7 +182,7 @@ const SellerSide = ({ data }) => {
             {myProducts?.map((x) => (
               <div
                 key={myProducts.indexOf(x)}
-                className="max-w-lg p-4 shadow-md  dark:text-gray-100"
+                className="max-w-lg p-4 shadow-md bg-gray-100 dark:bg-gray-900 dark:text-gray-100"
               >
                 <div className="space-y-4">
                   <div className="space-y-2">
@@ -192,36 +192,29 @@ const SellerSide = ({ data }) => {
                       className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
                     />
                   </div>
-                  <div className="">
-                    <p className="text-xl font-semibold text-black">
+                  <div className="flex justify-between">
+                    <h3 className="text-xl font-semibold dark:text-teal-400">
                       {x?.itemName}
-                    </p>
-                    <div className="flex justify-between px-5">
-                      <p className="text-xl font-semibold  mt-3 text-black">
-                        Price: {x?.itemOriginalPrice}
-                      </p>
-                      <p className="text-xl font-semibold  mt-3 text-black">
-                        Sell Price: {x?.itemRetailPrice}
-                      </p>
-                    </div>
-                    <div className="flex justify-between mt-4 px-5">
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => {
-                          handleProductDelete(x?._id);
-                        }}
-                      >
-                        Delete
-                      </button>
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => {
-                          advertise(x);
-                        }}
-                      >
-                        advertise
-                      </button>
-                    </div>
+                    </h3>
+                    <h3 className="text-xl font-semibold dark:text-teal-400">
+                      Price: {x?.itemOriginalPrice}
+                    </h3>
+                    <button
+                      className="btn btn-sm"
+                      onClick={() => {
+                        handleProductDelete(x?._id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className="btn btn-sm"
+                      onClick={() => {
+                        advertise(x);
+                      }}
+                    >
+                      advertise
+                    </button>
                   </div>
                 </div>
               </div>

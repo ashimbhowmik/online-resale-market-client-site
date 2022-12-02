@@ -10,7 +10,7 @@ const paymentHandler = (productId, token) => {
   const finalData = { cardName, cardNumber, productId };
 
   fetch(
-    `https://online-resale-market-client-site.vercel.app/booking/${productId}`,
+    `https://online-resale-market-server-site.vercel.app/booking/${productId}`,
     {
       method: "PUT",
       headers: {
@@ -27,7 +27,7 @@ const paymentHandler = (productId, token) => {
 
   axios
     .post(
-      "https://online-resale-market-client-site.vercel.app/payment",
+      "https://online-resale-market-server-site.vercel.app/payment",
       finalData
     )
     .then((res) => {
@@ -43,7 +43,7 @@ const BuyerSide = () => {
   const [myOrders, setMyOrders] = useState();
   const [productId, setProductId] = useState();
   useEffect(() => {
-    fetch("https://online-resale-market-client-site.vercel.app/booking")
+    fetch("https://online-resale-market-server-site.vercel.app/booking")
       .then((res) => res.json())
       .then((data) => setMyOrders(data));
   }, []);
@@ -72,7 +72,7 @@ const BuyerSide = () => {
                   {x?.itemName}
                 </h3>
                 <h3 className="text-xl font-semibold dark:text-teal-400">
-                  Price: {x?.itemRetailPrice}
+                  Price: {x?.itemOriginalPrice}
                 </h3>
                 <button
                   className={

@@ -82,16 +82,20 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         saveUser(user.email, user.displayName, role, "PUT");
         setAuthError("");
         const destination = location?.state?.from || "/";
         navigate(destination);
+        setTimeout(function () {
+          window.location.reload();
+        }, 2000);
       })
       .catch((error) => {
         setAuthError(error.message);
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   // observer user state
@@ -126,7 +130,7 @@ const useFirebase = () => {
   // saved user function
   const saveUser = (email, displayName, role, method) => {
     const user = { email, displayName, role };
-    fetch("https://online-resale-market-client-site.vercel.app/users", {
+    fetch("https://online-resale-market-server-site.vercel.app/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -137,7 +141,7 @@ const useFirebase = () => {
 
   // // admin data load
   // useEffect(() => {
-  //   fetch(`https://online-resale-market-client-site.vercel.app/users/${user.email}`)
+  //   fetch(`https://online-resale-market-server-site.vercel.app/users/${user.email}`)
   //     .then((res) => res.json())
   //     .then((data) => setAdmin(data.admin));
   // }, [user.email]);

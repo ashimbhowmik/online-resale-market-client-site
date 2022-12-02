@@ -8,7 +8,7 @@ const AdminPart = () => {
   const pageParam = useParams().page;
   const [allUsers, setAllUsers] = useState();
   useEffect(() => {
-    fetch("https://online-resale-market-client-site.vercel.app/allUsers")
+    fetch("https://online-resale-market-server-site.vercel.app/allUsers")
       .then((res) => res.json())
       .then((data) => setAllUsers(data));
   }, []);
@@ -23,7 +23,7 @@ const AdminPart = () => {
     const user = { email };
 
     fetch(
-      `https://online-resale-market-client-site.vercel.app/updateSellerStatus`,
+      `https://online-resale-market-server-site.vercel.app/updateSellerStatus`,
       {
         method: "PUT",
         headers: {

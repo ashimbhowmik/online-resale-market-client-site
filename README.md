@@ -1,11 +1,6 @@
 # Getting Started with Create React App
 
-Live Link - [Create React App]().
-
-## Admin Role
-
-- ashimbhowmik239@gmail.com
-- pass : 123456
+Live Link - [Create React App](https://dulcet-nougat-a8426d.netlify.app/dashboard/my-orders).
 
 ## I havae use this project
 

@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 const bookCycle = (item) => {
   delete item?._id;
   axios
-    .post("https://online-resale-market-client-site.vercel.app/booking", item)
+    .post("https://online-resale-market-server-site.vercel.app/booking", item)
     .then((res) => {
       if (res.data.insertedId) {
         toast.success("Booked Successfully");
@@ -22,12 +22,11 @@ const CategoriesCard = () => {
   const [itemInfo, setItemInfo] = useState({});
 
   useEffect(() => {
-    fetch("https://online-resale-market-client-site.vercel.app/allProducts")
+    fetch("https://online-resale-market-server-site.vercel.app/allProducts")
       .then((res) => res.json())
-      .then((data) => data.filter((x) => x?.category === category))
+      .then((data) => data.filter((x) => x?.itemCategory === category))
       .then((filteredData) => setAllItems(filteredData));
   }, [category]);
-
   return (
     <>
       <div>
@@ -37,42 +36,40 @@ const CategoriesCard = () => {
         {allItems?.map((x) => (
           <div
             key={x._id}
-            className="max-w-lg p-4 shadow-md bg-gray-100 dark:bg-gray-900 dark:text-gray-100"
+            className="max-w-lg p-4 shadow-md bg-slate-200  text-black"
           >
             <div className="space-y-4">
               <div className="space-y-2">
                 <img
-                  src={x?.image}
+                  src={x?.itemImage}
                   alt={x?.itemName}
                   className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
                 />
                 <div className="flex items-center text-xs">
-                  <span>{x?.createDate}</span>
+                  <span>{new Date(x?.itemDate).toLocaleString()}</span>
                 </div>
-                <div className="pb-2">
-                  <h2>Seller Name: {x?.sellerName}</h2>
-                  <h2>Location: {x?.location}</h2>
+                <div className="pb-2 text-xl ">
+                  <h2>Seller Name: {x?.itemSeller}</h2>
+                  <h2>Location: {x?.itemLocation}</h2>
                 </div>
-                <div className="card-actions justify-between">
-                  <div className="badge badge-outline">
-                    Resale Price: {x?.resalePrice}
+                <div className="">
+                  <div className="text-xl font-bold">
+                    Resale Price: {x?.itemRetailPrice}
                   </div>
-                  <div className="badge badge-outline">
-                    Original Price: {x?.originalPrice}
+                  <div className="text-xl font-bold">
+                    Original Price: {x?.itemOriginalPrice}
                   </div>
-                </div>
-                <div className="card-actions justify-center">
-                  <div className="badge badge-outline">
-                    years of use: {x?.yearsOfUse}
+                  <div className="text-xl font-bold">
+                    years of use: {x?.itemYearsUsed}
                   </div>
                 </div>
               </div>
               <div className="flex justify-between">
-                <h3 className="text-xl font-semibold dark:text-teal-400">
+                <h3 className="text-xl font-semibold text-red-600">
                   {x?.itemName}
                 </h3>
                 <button
-                  className="btn btn-sm"
+                  className="btn btn-primary"
                   onClick={() => {
                     setItemInfo(x);
                     document.getElementById(
