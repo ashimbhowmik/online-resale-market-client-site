@@ -177,7 +177,7 @@ const SellerSide = ({ data }) => {
                 key={myProducts.indexOf(x)}
                 className="max-w-lg p-4 shadow-md  dark:text-gray-100"
               >
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                   <div className="space-y-2">
                     <img
                       src={x?.itemImage}
@@ -186,7 +186,7 @@ const SellerSide = ({ data }) => {
                     />
                   </div>
                   <div className="">
-                    <p className="text-xl font-semibold text-black px-5">
+                    <p className="text-xl font-semibold text-black ">
                       {x?.itemName}
                     </p>
                     <div className="flex justify-between px-5">
@@ -216,7 +216,7 @@ const SellerSide = ({ data }) => {
                       </button>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
